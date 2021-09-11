@@ -1,0 +1,12 @@
+.DS_Store
+.vscode
+.vscode/*
+*.dSYM
+*.o
+*.a
+*.dylib
+so_long
+*.bmp
+*/*.swiftdoc
+*/*.swiftmodule
+**/*.swiftsourceinfo
