@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dmilan <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2020/10/29 09:27:02 by dmilan            #+#    #+#             */
+/*   Updated: 2020/11/02 12:40:47 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+void	ft_bzero(void *s, size_t n)
 {
-	char	**temp;
+	unsigned int	i;
+	unsigned char	*p;
 
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	i = 0;
+	p = s;
+	while (i < n)
+		p[i++] = '\0';
 }

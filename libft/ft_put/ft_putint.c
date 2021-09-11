@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_putint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msamual <msamual@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2021/03/26 16:00:47 by msamual           #+#    #+#             */
+/*   Updated: 2021/04/08 14:54:55 by msamual          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include	"libft.h"
 
-void	free_cpp(char **cpp)
+int	ft_putint(int c)
 {
-	char	**temp;
-
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	return (write(1, &c, 1));
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2020/10/28 16:08:53 by dmilan            #+#    #+#             */
+/*   Updated: 2021/04/13 08:44:42 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	**temp;
+	int	i;
 
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	i = ft_strlen((char *)s);
+	while (i >= 0)
+	{
+		if (s[i] == c)
+			return ((char *)s + i);
+		i--;
+	}
+	return (NULL);
 }

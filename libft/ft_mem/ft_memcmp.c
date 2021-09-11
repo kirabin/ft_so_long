@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2020/10/29 10:53:48 by dmilan            #+#    #+#             */
+/*   Updated: 2021/04/13 08:44:00 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	**temp;
+	unsigned int	i;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	i = 0;
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (p1[i] == p2[i] && i < n - 1)
+		i++;
+	return (p1[i] - p2[i]);
 }

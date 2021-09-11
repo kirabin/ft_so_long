@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_get_file_name_from_path.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2021/02/14 10:04:06 by dmilan            #+#    #+#             */
+/*   Updated: 2021/02/14 10:11:14 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+char	*ft_get_file_name_from_path(char *path)
 {
-	char	**temp;
+	char	*file_name;
 
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	file_name = path;
+	while (*path)
+	{
+		if (*path++ == '/')
+			file_name = path;
+	}
+	return (file_name);
 }

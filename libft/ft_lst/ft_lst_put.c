@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_lst_put.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2020/12/10 10:43:39 by dmilan            #+#    #+#             */
+/*   Updated: 2021/04/07 14:36:58 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+void	ft_lst_put(t_list *list, void (*put)(void *content))
 {
-	char	**temp;
-
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	if (!list)
+	{
+		ft_printf("list is empty\n");
+		return ;
+	}
+	if (!put)
+	{
+		ft_printf("function is empty\n");
+		return ;
+	}
+	while (list)
+	{
+		put(list->content);
+		list = list->next;
+	}
+	ft_printf("\n");
 }

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_lstfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2020/11/13 12:51:50 by dmilan            #+#    #+#             */
+/*   Updated: 2021/04/13 08:43:27 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+t_list	*ft_lstfind(t_list *begin_list, void *data_ref, int (*cmp)())
 {
-	char	**temp;
-
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	while (begin_list)
+	{
+		if ((*cmp)(begin_list->content, data_ref))
+			return (begin_list);
+		begin_list = begin_list->next;
+	}
+	return (NULL);
 }

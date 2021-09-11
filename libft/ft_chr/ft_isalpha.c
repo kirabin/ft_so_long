@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2020/10/28 14:55:14 by dmilan            #+#    #+#             */
+/*   Updated: 2021/04/07 14:38:00 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+int	ft_isalpha(int c)
 {
-	char	**temp;
-
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	if ('a' <= c && c <= 'z')
+		return (1);
+	if ('A' <= c && c <= 'Z')
+		return (1);
+	return (0);
 }

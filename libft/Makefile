@@ -1,59 +1,117 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/28 11:34:55 by dmilan            #+#    #+#              #
+#    Updated: 2021/04/15 14:30:29 by dmilan           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
 ################################################################################
 #                                                                              #
 #                                VARIABLES                                     #
 #                                                                              #
 ################################################################################
-RED			=	\033[31m
-GREEN		=	\033[32m
-ORANGE		=	\033[93m
-NO_COLOR	=	\033[0m
 
-NAME		=	libft.a
-HEADER		=	libft.h
-FLAGS		=	-Wall -Wextra -Werror -g
+NAME=		libft.a
+HEADER=		libft.h
+CCFLAGS=	-Wall -Wextra -Werror
 
-SRC_STR		=	_strlen _atoi _itoa _strdup _strcmp _strnstr _strtrim \
-				fill_string find_char count_char skip_char is_name \
-				string_join string_join_free split_string get_next_line \
-				string_join_char
+SRC_STR=	ft_atoi \
+			ft_itoa \
+			ft_strchr \
+			ft_strcount \
+			ft_strdup \
+			ft_strfill \
+			ft_string_is_path \
+			ft_strjoin \
+			ft_strjoin_free \
+			ft_strjoin \
+			ft_strlcat \
+			ft_strlcpy \
+			ft_strlen \
+			ft_strmapi \
+			ft_strncmp \
+			ft_strnew \
+			ft_strnstr \
+			ft_strrchr \
+			ft_strskip \
+			ft_strskip_char \
+			ft_strtrim \
+			ft_substr \
+			is_long_long \
+			is_numeral
 
-SRC_CHR		=	is_alpha is_digit is_space to_lower to_upper
+SRC_LST=	ft_lst_bubble_sort \
+			ft_lst_put \
+			ft_lst_swap \
+			ft_lstadd_back \
+			ft_lstadd_front \
+			ft_lstclear \
+			ft_lstdelone \
+			ft_lstfind \
+			ft_lstiter \
+			ft_lstlast \
+			ft_lstmap \
+			ft_lstmerge \
+			ft_lstnew \
+			ft_lstrev \
+			ft_lstsize
 
-SRC_NUM		=	_abs int_max int_min int_len swap_int \
-				is_long_long is_number is_integer
+SRC_CHR=	ft_isalnum \
+			ft_isalpha \
+			ft_isascii \
+			ft_isblank \
+			ft_isdigit \
+			ft_isprint \
+			ft_isspace \
+			ft_tolower \
+			ft_toupper
 
-SRC_PUT		=	put_char put_cpp put_int put_string put_two_strings put_uint \
-				put_uint_hex put_void
+SRC_INT=	ft_leni \
+			ft_min \
+			ft_abs \
+			ft_swapi \
+			ft_max
 
-SRC_PATH	=	is_path get_file_name_from_path
+SRC_PUT=	ft_putchar_fd \
+			ft_putcpp_fd \
+			ft_putendl \
+			ft_putint \
+			ft_putnbr_fd \
+			ft_putstr \
+			ft_putstr_fd
 
-SRC_LST		=	clear_list delete_list find_list list_add_back list_add_front \
-				list_get_last list_size merge_lists new_list put_list \
-				reverse_list sort_list swap_list_content
+SRC_MEM=	ft_bzero \
+			ft_calloc \
+			ft_memccpy \
+			ft_memchr \
+			ft_memcmp \
+			ft_memcpy \
+			ft_memmove \
+			ft_memset
 
-SRC_QUEUE	=	new_queue clear_queue pop_queue push_queue put_queue
+SRC_FREE=	free_cpp
 
-SRC_MEM		=	_calloc
+SRC=		$(patsubst %, ft_str/%.c, $(SRC_STR)) \
+			$(patsubst %, ft_lst/%.c, $(SRC_LST)) \
+			$(patsubst %, ft_mem/%.c, $(SRC_MEM)) \
+			$(patsubst %, ft_chr/%.c, $(SRC_CHR)) \
+			$(patsubst %, ft_put/%.c, $(SRC_PUT)) \
+			$(patsubst %, ft_int/%.c, $(SRC_INT)) \
+			$(patsubst %, free/%.c, $(SRC_FREE)) \
+			ft_uitoa.c \
+			ft_lenui.c \
+			ft_lenui_hex.c \
+			ft_lenul_hex.c \
+			ft_split.c \
+			get_next_line.c
 
-SRC_FREE	=	free_cpp
-
-SRC_COLOR	=	new_color
-
-SRC_POINT	=	point_add point_len point_new point_rotate
-
-SRC			=	$(patsubst %, string/%.c, $(SRC_STR)) \
-				$(patsubst %, memory/%.c, $(SRC_MEM)) \
-				$(patsubst %, char/%.c, $(SRC_CHR)) \
-				$(patsubst %, put/%.c, $(SRC_PUT)) \
-				$(patsubst %, number/%.c, $(SRC_NUM)) \
-				$(patsubst %, free/%.c, $(SRC_FREE)) \
-				$(patsubst %, color/%.c, $(SRC_COLOR)) \
-				$(patsubst %, point/%.c, $(SRC_POINT)) \
-				$(patsubst %, path/%.c, $(SRC_PATH)) \
-				$(patsubst %, list/%.c, $(SRC_LST)) \
-				$(patsubst %, queue/%.c, $(SRC_QUEUE))
-
-OBJ			=	$(SRC:.c=.o)
+OBJ=$(SRC:.c=.o)
 
 ################################################################################
 #                                                                              #
@@ -64,28 +122,16 @@ OBJ			=	$(SRC:.c=.o)
 
 all: $(NAME)
 
-shout_assemble:
-	@echo "$(GREEN)Assembling libft$(NO_COLOR)"
-
-shout_clean:
-	@echo "$(RED)Cleaning libft$(NO_COLOR)"
-
-shout_test:
-	@echo "$(ORANGE)Testing$(NO_COLOR)"
-
 %.o: %.c $(HEADER)
-	gcc -c $(FLAGS) $< -o $@ -I.
+	gcc -c $(CCFLAGS) $< -o $@ -I.
 
-$(NAME): shout_assemble $(OBJ)
+$(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-clean: shout_clean
-	rm -f **/*.o
+clean:
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-norm:
-	norminette

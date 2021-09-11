@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cpp.c                                         :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 14:29:08 by dmilan            #+#    #+#             */
-/*   Updated: 2021/04/15 14:29:19 by dmilan           ###   ########.fr       */
+/*   Created: 2020/10/31 17:13:04 by dmilan            #+#    #+#             */
+/*   Updated: 2020/12/11 10:51:13 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_cpp(char **cpp)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	char	**temp;
+	t_list	*node;
+	t_list	*temp;
 
-	temp = cpp;
-	while (temp && *temp)
-		free(*temp++);
-	free(cpp);
+	node = *lst;
+	if (!del || !*lst)
+		return ;
+	while (node)
+	{
+		del(node->content);
+		temp = node;
+		node = node->next;
+		free(temp);
+	}
+	*lst = NULL;
 }

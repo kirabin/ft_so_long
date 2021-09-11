@@ -6,7 +6,7 @@ SRC			=	main.c
 
 OBJ			= $(SRC:.c=.o)
 INC_DIRS	=  -I. -I./libft -I./mlx_mms
-HEADERS		= cub3d.h libft/libft.h
+HEADERS		= so_long.h libft/libft.h
 MLX_OG		= -framework OpenGL -framework AppKit -lmlx
 MLX_MM		= -framework OpenGL -framework AppKit -L. -lmlx
 
@@ -36,7 +36,10 @@ fclean: clean
 re: fclean all
 
 run:
-	./$(NAME) levels/default.cub
+	./$(NAME) map.ber
 
 save:
-	./$(NAME) levels/default.cub --save
+	./$(NAME) map.ber --save
+
+norm:
+	norminette *.{c,h}
